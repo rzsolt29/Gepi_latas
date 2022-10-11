@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 #kép importálás és átméretezés
 
-img = cv2.imread("src/2.jpg",0)
+img = cv2.imread("src/kozeli/10.jpg",0)
 
 x = 650 / img.shape[0]
 y = x
@@ -27,7 +27,7 @@ img = cv2.resize(img, None, None, x, y, cv2.INTER_CUBIC)
 gauss5=cv2.GaussianBlur(img,(5,5),0)
 #cv2.imshow("Blured image 5", gauss5)
 
-bilateral = cv2.bilateralFilter(img,9,75,75)           #
+bilateral = cv2.bilateralFilter(img,9,75,75)           
 #cv2.imshow("Bilateral filterde image",bilateral)
 
 median = cv2.medianBlur(img,5)                          #ez a simítás tűnik a legjobbank, de a HoughCircles mégias a bilateralt jobban kezeli
@@ -46,8 +46,8 @@ edges = cv2.Canny(morph,100,200)                        #Gauss-nál kevésbé za
 #cv2.imshow("Canny Edge Detection median",edges)
 edges2 = cv2.Canny(gauss5,100,200)
 #cv2.imshow("Canny Edge Detection gauss5",edges2)
-edges3 = cv2.Canny(bilateral,100,200)
-#cv2.imshow("Canny Edge Detection gauss5",edges2)
+edges3 = cv2.Canny(bilateral,90,190)
+#cv2.imshow("Canny Edge Detection bilateral",edges2)
 
 
 cimg = cv2.cvtColor(edges3,cv2.COLOR_GRAY2BGR)
