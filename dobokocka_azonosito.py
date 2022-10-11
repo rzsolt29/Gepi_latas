@@ -19,7 +19,7 @@ img = cv2.resize(img, None, None, x, y, cv2.INTER_CUBIC)
 
 #simítás
 
-#gauss3=cv2.GaussianBlur(gray,(3,3),0)
+gauss3=cv2.GaussianBlur(img,(3,3),0)
 #cv2.imshow("Blured image 3", gauss3)
 
 gauss5=cv2.GaussianBlur(img,(5,5),0)
@@ -34,13 +34,16 @@ median = cv2.medianBlur(img,5)                          #ez a simítás tűnik a
 
 #morphologyEx 
 k = np.ones((3, 3))
-morph = cv2.morphologyEx(median, cv2.MORPH_CLOSE, k)
+morph1 = cv2.morphologyEx(gauss3, cv2.MORPH_CLOSE, k)
+morph2 = cv2.morphologyEx(gauss5, cv2.MORPH_CLOSE, k)
+morph3 = cv2.morphologyEx(bilateral, cv2.MORPH_CLOSE, k)
+morph4 = cv2.morphologyEx(median, cv2.MORPH_CLOSE, k)
 #cv2.imshow("morph image", morph)
 
 
 # Canny éldetektor
 
-edges = cv2.Canny(morph,100,200)
+edges = cv2.Canny(morph4,100,200)
 #cv2.imshow("Canny Edge Detection median",edges)
 edges2 = cv2.Canny(gauss5,100,200)
 #cv2.imshow("Canny Edge Detection gauss5",edges2)
@@ -65,9 +68,9 @@ for i in circles[0,:]:
     points+=1
 
 
+text = 'Ossz: ' + str(points)           
+cv2.putText(cimg,text,(20,30),0,1,(0,255,0), 3, cv2.LINE_AA)
 cv2.imshow('detected circles',cimg)
-print("Dobott pontok:")
-print(points)
 
 
 cv2.waitKey(0)
