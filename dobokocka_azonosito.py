@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def dicePointDetector(kep):
+def dicePointDetector(kep, result):
     #kép importálás és átméretezés
     img = cv2.imread(kep)
 
@@ -33,10 +33,13 @@ def dicePointDetector(kep):
             points = points+1
 
     #Pontok értékének képre írása
-    text = 'Ossz.: ' + str(points)           
+    text = 'Talalat: ' + str(points)           
     cv2.putText(img,text,(10,30),0,1,(0,255,0), 4, cv2.LINE_AA)
+    text = 'Elvart: ' + result           
+    cv2.putText(img,text,(10,70),0,1,(0,255,0), 4, cv2.LINE_AA)
     
     cv2.imshow("Detected circles", img)
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
+#dicePointDetector("kepek/1.jpg","16")      # to test the function

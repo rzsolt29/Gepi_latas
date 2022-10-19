@@ -1,0 +1,8 @@
+kepek/1.jpg,16
+kepek/2.jpg,16
+kepek/3.jpg,11
+kepek/4.jpg,11
+kepek/5.jpg,10
+kepek/6.jpg,10
+kepek/7.jpg,18
+kepek/8.jpg,18
