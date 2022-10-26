@@ -13,6 +13,7 @@ def dicePointDetector(kep, result, detectedPoints):
     GrayImg = cv2.cvtColor(img.astype(np.uint8), cv2.COLOR_BGR2GRAY)
     imgMedian = cv2.medianBlur(GrayImg, 11)
 
+    #morphológiai zárás
     k = np.ones((3, 3))
     imgMedian = cv2.morphologyEx(imgMedian, cv2.MORPH_CLOSE, k)
 

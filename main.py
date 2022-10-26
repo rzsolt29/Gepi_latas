@@ -26,6 +26,7 @@ def textToList(inputFile):
 
 detectedPoints = []
 
+#fájl beolvasás és feldolgozás
 path = "inputKepekEsErtekek.txt"
 if os.path.exists(path) == True:
     images, results = textToList(path)
@@ -38,6 +39,7 @@ if os.path.exists(path) == True:
 else:
     print("Hiba: A megadott fájl nem létezik")
 
+#A megtalált és elvárt pontok közötti különbségnek a megszámlálása
 if len(detectedPoints) == len(results):
     errors=0
     for i in range(len(detectedPoints)):
