@@ -23,14 +23,24 @@ def textToList(inputFile):
             results.append(inputpath)
         
     return images,results
+
+detectedPoints = []
+
 path = "inputKepekEsErtekek.txt"
 if os.path.exists(path) == True:
     images, results = textToList(path)
-    print(images)
-    print(results)
+    #print(images)
+    #print(results)
     numberOfResult = 0
     for image in images:
-        dicePointDetector(image, results[numberOfResult])
+        dicePointDetector(image, results[numberOfResult], detectedPoints)
         numberOfResult += 1
 else:
     print("Hiba: A megadott fájl nem létezik")
+
+if len(detectedPoints) == len(results):
+    errors=0
+    for i in range(len(detectedPoints)):
+        if(detectedPoints[i] != int(results[i])):
+            errors+=1
+    print("Elteresek szam a megtalalt pontok és az elvart eredmeny kozott: "+str(errors))
