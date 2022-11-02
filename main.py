@@ -34,7 +34,7 @@ if os.path.exists(path) == True:
     #print(results)
     numberOfResult = 0
     for image in images:
-        dicePointDetector(image, results[numberOfResult], detectedPoints)
+        dicePointDetector(image, results[numberOfResult], detectedPoints)   #input kép, elvárt eredmény, output: list
         numberOfResult += 1
 else:
     print("Hiba: A megadott fájl nem létezik")
