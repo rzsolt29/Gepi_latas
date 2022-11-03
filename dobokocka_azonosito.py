@@ -35,17 +35,32 @@ def dicePointDetector(kep, result, detectedPoints):
             points = points+1
 
     dices = 0
-    for i in range(0,len(circles[0])):
-        for j in range(1,len(circles[0])):
-            if(i != j):
-                '''a=math.sqrt(float( ( (float(circles[0][i][0])-float(circles[0][j][0]))**2 + (float(circles[0][i][1])-float(circles[0][j][1]))**2 ) ))
-                print(type(a))
-                print(a)'''
-                if math.sqrt(float( ( (float(circles[0][i][0])-float(circles[0][j][0]))**2 + (float(circles[0][i][1])-float(circles[0][j][1]))**2 ) )) <= 60:
-                    print("i = "+str(i))
-                    print("j = "+str(j))
-                    print("ehhez közel van valami")
+    circles2=circles.tolist()
+    print(circles2[0][0])
 
+    for z in range(0,5):
+        for i in range(0, len(circles2[0])-1):
+            for j in range(1, len(circles2[0])-2):
+                '''and (circles2[0][i] != [0,0,0]) and (circles2[0][j] != [0,0,0])'''
+                if  i != j and i <= len(circles2[0])-1 and j <= len(circles2[0])-1 :
+                    if math.sqrt(float( ( (float(circles2[0][i][0])-float(circles2[0][j][0]))**2 + (float(circles2[0][i][1])-float(circles2[0][j][1]))**2 ))) <= 130:
+                        print("ehhez közel van valami")
+                        x=(float(circles2[0][i][0])+float(circles2[0][j][0]))/2
+                        y=(float(circles2[0][i][1])+float(circles2[0][j][1]))/2
+                        circles2[0].append([x,y, 13])
+                        if i<j:
+                            toDelete=circles2[0][i]
+                            circles2[0].remove(toDelete)
+                            toDelete=circles2[0][j-1]
+                            circles2[0].remove(toDelete)
+                        else:
+                            toDelete=circles2[0][i]
+                            circles2[0].remove(toDelete)
+                            toDelete=circles2[0][j]
+                            circles2[0].remove(toDelete)
+                    
+    #print(circles2)
+    dices=len(circles2[0])
 
 
     #Pontok értékének képre írása
@@ -56,7 +71,7 @@ def dicePointDetector(kep, result, detectedPoints):
     text = "Kockak: " + str(dices)           
     cv2.putText(img,text,(10,110),0,1,(0,255,0), 4, cv2.LINE_AA)
     
-    #cv2.imshow("Detected circles", img)
+    cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
