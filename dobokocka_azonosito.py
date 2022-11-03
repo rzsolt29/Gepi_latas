@@ -37,15 +37,15 @@ def dicePointDetector(kep, result, detectedPoints):
     dices = 0
     circles2=circles.tolist()
 
-    for z in range(0,5):
+    for z in range(0,8):
         for i in range(0, len(circles2[0])-1):
-            for j in range(1, len(circles2[0])-2):
+            for j in range(0, len(circles2[0])):
                 '''and (circles2[0][i] != [0,0,0]) and (circles2[0][j] != [0,0,0])'''
                 if  i != j and i <= len(circles2[0])-1 and j <= len(circles2[0])-1 :
-                    if math.sqrt(float( ( (float(circles2[0][i][0])-float(circles2[0][j][0]))**2 + (float(circles2[0][i][1])-float(circles2[0][j][1]))**2 ))) <= 220:
+                    if math.sqrt(float( ( (float(circles2[0][i][0])-float(circles2[0][j][0]))**2 + (float(circles2[0][i][1])-float(circles2[0][j][1]))**2 ))) <= 85:
                         x=(float(circles2[0][i][0])+float(circles2[0][j][0]))/2
                         y=(float(circles2[0][i][1])+float(circles2[0][j][1]))/2
-                        circles2[0].append([x,y, 15])
+                        
                         if i<j:
                             toDelete=circles2[0][i]
                             circles2[0].remove(toDelete)
@@ -56,18 +56,24 @@ def dicePointDetector(kep, result, detectedPoints):
                             circles2[0].remove(toDelete)
                             toDelete=circles2[0][j]
                             circles2[0].remove(toDelete)
-                    
-    print(circles2)
-    print("--------------")
+                        circles2[0].append([x,y, 15])
+ 
+    #print(circles2)
+
     dices=len(circles2[0])
     circles2np=np.array(circles2)
-    #print(circles2[0][:])
+    
+    
+    #j=1
     for i in circles2[0][:]:
             x=np.uint16(i[0])
             y=np.uint16(i[1])
             center = (x,y)
-            radius = 120
+            radius = 100
             cv2.circle(img, center, radius, (222, 222, 222), 7)
+            #text = str(j)           
+            #cv2.putText(img,text,center,0,1,(255,255,255), 4, cv2.LINE_AA)
+            #j+=1
 
 
     #Pontok értékének képre írása
@@ -83,4 +89,4 @@ def dicePointDetector(kep, result, detectedPoints):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 detectedPoints = []
-dicePointDetector("kepek/2.jpg", "18", detectedPoints)      # to test the function
+dicePointDetector("kepek/4.jpg", "18", detectedPoints)      # to test the function
