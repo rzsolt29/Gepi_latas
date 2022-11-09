@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import math
 
-def dicePointDetector(kep, result, detectedPoints):
+def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDices):
     #kép importálás és átméretezés
     img = cv2.imread(kep)
 
@@ -58,7 +58,6 @@ def dicePointDetector(kep, result, detectedPoints):
                             circles2[0].remove(toDelete)
                         circles2[0].append([x,y, 15])
  
-    #print(circles2)
 
     dices=len(circles2[0])
     circles2np=np.array(circles2)
@@ -79,14 +78,32 @@ def dicePointDetector(kep, result, detectedPoints):
     #Pontok értékének képre írása
     text = "Talalat: " + str(points)           
     cv2.putText(img,text,(10,30),0,1,(0,255,0), 4, cv2.LINE_AA)
-    text = "Elvart: " + result           
-    cv2.putText(img,text,(10,70),0,1,(0,255,0), 4, cv2.LINE_AA)
+
+    if(int(points) == int(pointsToGet)):
+        text = "Elvart: " + pointsToGet           
+        cv2.putText(img,text,(10,70),0,1,(0,255,0), 4, cv2.LINE_AA)
+    else:
+        text = "Elvart: " + pointsToGet
+        cv2.putText(img,text,(10,70),0,1,(0,0,255), 4, cv2.LINE_AA)
+
     text = "Kockak: " + str(dices)           
     cv2.putText(img,text,(10,110),0,1,(0,255,0), 4, cv2.LINE_AA)
     
+    if(int(dicesToGet) == int(dices)):
+        text = "Elvart: " + str(dicesToGet)           
+        cv2.putText(img,text,(10,140),0,1,(0,255,0), 4, cv2.LINE_AA)
+    else:
+        text = "Elvart: " + str(dicesToGet)           
+        cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
+
     cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
+    detectedDices.append(dices)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-detectedPoints = []
-dicePointDetector("kepek/4.jpg", "18", detectedPoints)      # to test the function
+
+
+# to test the function
+
+#detectedPoints = []
+#dicePointDetector("kepek/4.jpg", "18", detectedPoints)
