@@ -52,7 +52,7 @@ if len(detectedPoints) == len(pointsToGet):
     for i in range(len(detectedPoints)):
         if(detectedPoints[i] != int(pointsToGet[i])):
             errors+=1
-    print("Elteresek szam a megtalalt pontok és az elvart eredmeny kozott: "+str(errors))
+    print("Elteresek szam a megtalalt pontok és az elvart eredmeny kozott (ennyi kepnel talalhato hiba): "+str(errors))
 else:
     print("hiba")
 
@@ -62,6 +62,6 @@ if len(detectedDices) == len(dicesToGet):
     for i in range(len(detectedDices)):
         if(detectedDices[i] != int(dicesToGet[i])):
             errors+=1
-    print("Elteresek szam a elvart és megtalalat kockak kozott: "+str(errors))
+    print("Elteresek szam a elvart és megtalalat kockak kozott (ennyi kepnel talalhato hiba): "+str(errors))
 else:
     print("hiba")
