@@ -37,7 +37,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     dices = 0
     circles2=circles.tolist()
 
-    for z in range(0,8):
+    for z in range(0,6):
         for i in range(0, len(circles2[0])-1):
             for j in range(0, len(circles2[0])):
                 '''and (circles2[0][i] != [0,0,0]) and (circles2[0][j] != [0,0,0])'''
@@ -96,7 +96,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
         text = "Elvart: " + str(dicesToGet)           
         cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
 
-    cv2.imshow("Detected circles", img)
+    #cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
     detectedDices.append(dices)
     cv2.waitKey(0)
