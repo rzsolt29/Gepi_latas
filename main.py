@@ -52,7 +52,16 @@ if len(detectedPoints) == len(pointsToGet):
     for i in range(len(detectedPoints)):
         if(detectedPoints[i] != int(pointsToGet[i])):
             errors+=1
-    print("Elteresek szam a megtalalt pontok és az elvart eredmeny kozott (ennyi kepnel talalhato hiba): "+str(errors))
+    print("Elteresek szama megtalalt pontok és az elvart eredmeny kozott (ennyi kepnel talalhato hiba): "+str(errors))
+else:
+    print("hiba")
+
+if len(detectedPoints) == len(pointsToGet):
+    errors=0
+    for i in range(len(detectedPoints)):
+        if(detectedPoints[i] != int(pointsToGet[i])):
+            errors=errors+abs(detectedPoints[i]-int(pointsToGet[i]))
+    print("Elteresek szama megtalalt pontok és az elvart eredmeny kozott (osszes hibaszám): "+str(errors))
 else:
     print("hiba")
 
@@ -62,6 +71,15 @@ if len(detectedDices) == len(dicesToGet):
     for i in range(len(detectedDices)):
         if(detectedDices[i] != int(dicesToGet[i])):
             errors+=1
-    print("Elteresek szam a elvart és megtalalat kockak kozott (ennyi kepnel talalhato hiba): "+str(errors))
+    print("Elteresek szama elvart és megtalalat kockak kozott (ennyi kepnel talalhato hiba): "+str(errors))
+else:
+    print("hiba")
+
+if len(detectedDices) == len(dicesToGet):
+    errors=0
+    for i in range(len(detectedDices)):
+        if(detectedDices[i] != int(dicesToGet[i])):
+            errors=errors+abs(detectedDices[i]-int(dicesToGet[i]))
+    print("Elteresek szama elvart és megtalalat kockak kozott (osszes hibaszám): "+str(errors))
 else:
     print("hiba")

@@ -34,13 +34,14 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
 
     i=0
     while i <= len(circles2[0])-1:
-        if (circles2[0][i][2] > (radiusAvg+10) ):
+        if (circles2[0][i][2] > (radiusAvg+10) or circles2[0][i][2] < (radiusAvg-10)):
             toDelete = circles2[0][i]
             circles2[0].remove(toDelete)
         i += 1
     
     circles= np.array(circles2)
     circles2=circles.tolist()
+
     #pontok megszámlálása és képre írása
     points = 0
     if circles is not None:
@@ -114,7 +115,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
         text = "Elvart: " + str(dicesToGet)           
         cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
 
-    cv2.imshow("Detected circles", img)
+    #cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
     detectedDices.append(dices)
     cv2.waitKey(0)
