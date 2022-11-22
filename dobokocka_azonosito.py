@@ -34,7 +34,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
 
     i=0
     while i <= len(circles2[0])-1:
-        if (circles2[0][i][2] > (radiusAvg+10) or circles2[0][i][2] < (radiusAvg-10)):
+        if (circles2[0][i][2] > (radiusAvg+10) or circles2[0][i][2] < (radiusAvg-5)):
             toDelete = circles2[0][i]
             circles2[0].remove(toDelete)
         i += 1
@@ -126,4 +126,4 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
 
 #detectedPoints = []
 #detectedDices = []
-#dicePointDetector("kepek/16.jpg", "15","4", detectedPoints, detectedDices)
+#dicePointDetector("kepek/61.jpg", "13","3", detectedPoints, detectedDices)
