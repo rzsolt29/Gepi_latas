@@ -82,16 +82,12 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     circles2np=np.array(circles2)
     
     
-    #j=1
     for i in circles2[0][:]:
             x=np.uint16(i[0])
             y=np.uint16(i[1])
             center = (x,y)
             radius = 100
             cv2.circle(img, center, radius, (222, 222, 222), 7)
-            #text = str(j)           
-            #cv2.putText(img,text,center,0,1,(255,255,255), 4, cv2.LINE_AA)
-            #j+=1
 
 
     #Pontok értékének képre írása
