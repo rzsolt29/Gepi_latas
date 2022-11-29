@@ -27,14 +27,21 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     
     circles2=circles.tolist()
 
-    radiusSum=0
+    #átlag
+    '''radiusSum=0
     for i in circles2[0]:
         radiusSum += i[2]
-    radiusAvg = radiusSum / len(circles2[0])
+    radiusAvg = radiusSum / len(circles2[0])'''
+    
+    #medián
+    orderedCircles=sorted(circles2[0], key=lambda x: x[2])
+    radiusMedian=0
+    if(len(orderedCircles)>0):
+        radiusMedian=orderedCircles[int(len(orderedCircles)/2)][2]
 
     i=0
     while i <= len(circles2[0])-1:
-        if (circles2[0][i][2] > (radiusAvg+10) or circles2[0][i][2] < (radiusAvg-5)):
+        if (circles2[0][i][2] > (radiusMedian+10) or circles2[0][i][2] < (radiusMedian-5)):
             toDelete = circles2[0][i]
             circles2[0].remove(toDelete)
         i += 1
