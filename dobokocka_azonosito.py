@@ -37,7 +37,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     orderedCircles=sorted(circles2[0], key=lambda x: x[2])
     radiusMedian=0
     if(len(orderedCircles)>0):
-        radiusMedian=orderedCircles[int(len(orderedCircles)/2)][2]
+        radiusMedian=orderedCircles[int(round(len(orderedCircles)/2))][2]
 
     i=0
     while i <= len(circles2[0])-1:
