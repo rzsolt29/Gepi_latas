@@ -97,28 +97,36 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
             cv2.circle(img, center, radius, (222, 222, 222), 7)
 
 
-    #Pontok értékének képre írása
-    text = "Talalat: " + str(points)           
-    cv2.putText(img,text,(10,30),0,1,(0,255,0), 4, cv2.LINE_AA)
+    if pointsToGet == "-1" and dicesToGet == "-1":
+        #Pontok értékének képre írása
+        text = "Pontok: " + str(points)
+        cv2.putText(img,text,(10,30),0,1,(0,255,0), 4, cv2.LINE_AA)
 
-    if(int(points) == int(pointsToGet)):
-        text = "Elvart: " + pointsToGet           
+        text = "Kockak: " + str(dices)           
         cv2.putText(img,text,(10,70),0,1,(0,255,0), 4, cv2.LINE_AA)
     else:
-        text = "Elvart: " + pointsToGet
-        cv2.putText(img,text,(10,70),0,1,(0,0,255), 4, cv2.LINE_AA)
+        #Pontok értékének képre írása teszt üzemmódban
+        text = "Talalat: " + str(points)
+        cv2.putText(img,text,(10,30),0,1,(0,255,0), 4, cv2.LINE_AA)
 
-    text = "Kockak: " + str(dices)           
-    cv2.putText(img,text,(10,110),0,1,(0,255,0), 4, cv2.LINE_AA)
-    
-    if(int(dicesToGet) == int(dices)):
-        text = "Elvart: " + str(dicesToGet)           
-        cv2.putText(img,text,(10,140),0,1,(0,255,0), 4, cv2.LINE_AA)
-    else:
-        text = "Elvart: " + str(dicesToGet)           
-        cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
+        if(int(points) == int(pointsToGet)):
+            text = "Elvart: " + pointsToGet           
+            cv2.putText(img,text,(10,70),0,1,(0,255,0), 4, cv2.LINE_AA)
+        else:
+            text = "Elvart: " + pointsToGet
+            cv2.putText(img,text,(10,70),0,1,(0,0,255), 4, cv2.LINE_AA)
 
-    #cv2.imshow("Detected circles", img)
+        text = "Kockak: " + str(dices)           
+        cv2.putText(img,text,(10,110),0,1,(0,255,0), 4, cv2.LINE_AA)
+
+        if(int(dicesToGet) == int(dices)):
+            text = "Elvart: " + str(dicesToGet)           
+            cv2.putText(img,text,(10,140),0,1,(0,255,0), 4, cv2.LINE_AA)
+        else:
+            text = "Elvart: " + str(dicesToGet)           
+            cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
+
+    cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
     detectedDices.append(dices)
     cv2.waitKey(0)
