@@ -4,7 +4,7 @@ import sys
 
 if len(sys.argv) == 1:
     print("Keves parancssori argumentum")
-elif os.path.exists(sys.argv[1]) == True:
+elif os.path.exists(sys.argv[1]) == True and sys.argv[1].lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):
     detectedPoints = []
     detectedDices = []
     dicePointDetector(sys.argv[1], "-1","-1", detectedPoints, detectedDices)
