@@ -4,10 +4,13 @@ import sys
 
 if len(sys.argv) == 1:
     print("Keves parancssori argumentum")
-elif os.path.exists(sys.argv[1]) == True and sys.argv[1].lower().endswith(('.png', '.jpg', '.jpeg', '.tiff', '.bmp', '.gif')):
-    detectedPoints = []
-    detectedDices = []
-    dicePointDetector(sys.argv[1], "-1","-1", detectedPoints, detectedDices)
+elif os.path.exists(sys.argv[1]) == True:
+    if sys.argv[1].lower().endswith(('.png', '.jpg', '.jpeg')):
+        detectedPoints = []
+        detectedDices = []
+        dicePointDetector(sys.argv[1], "-1","-1", detectedPoints, detectedDices)
+    else:
+        print("Hibas fajlkiterjesztes")
 elif sys.argv[1] == "-test":
     
     def textToList(inputFile):
