@@ -121,10 +121,10 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
 
         if(int(dicesToGet) == int(dices)):
             text = "Elvart: " + str(dicesToGet)           
-            cv2.putText(img,text,(10,140),0,1,(0,255,0), 4, cv2.LINE_AA)
+            cv2.putText(img,text,(10,150),0,1,(0,255,0), 4, cv2.LINE_AA)
         else:
             text = "Elvart: " + str(dicesToGet)           
-            cv2.putText(img,text,(10,140),0,1,(0,0,255), 4, cv2.LINE_AA)
+            cv2.putText(img,text,(10,150),0,1,(0,0,255), 4, cv2.LINE_AA)
 
     cv2.imshow("Detected circles", img)
     detectedPoints.append(points)
