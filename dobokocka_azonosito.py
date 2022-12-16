@@ -26,12 +26,6 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     circles = np.uint16(np.around(circles))
     
     circles2=circles.tolist()
-
-    #átlag
-    '''radiusSum=0
-    for i in circles2[0]:
-        radiusSum += i[2]
-    radiusAvg = radiusSum / len(circles2[0])'''
     
     #medián
     orderedCircles=sorted(circles2[0], key=lambda x: x[2])
@@ -66,7 +60,6 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     for z in range(0,6):
         for i in range(0, len(circles2[0])-1):
             for j in range(0, len(circles2[0])):
-                '''and (circles2[0][i] != [0,0,0]) and (circles2[0][j] != [0,0,0])'''
                 if  i != j and i <= len(circles2[0])-1 and j <= len(circles2[0])-1 :
                     if math.sqrt(float( ( (float(circles2[0][i][0])-float(circles2[0][j][0]))**2 + (float(circles2[0][i][1])-float(circles2[0][j][1]))**2 ))) <= 85:
                         x=(float(circles2[0][i][0])+float(circles2[0][j][0]))/2
