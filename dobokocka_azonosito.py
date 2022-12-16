@@ -126,7 +126,7 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     cv2.destroyAllWindows()
 
 
-# to test the function
+# A függvény teszteléséhez a következő három sorra van szükség
 
 #detectedPoints = []
 #detectedDices = []
