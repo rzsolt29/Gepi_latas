@@ -16,11 +16,11 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
 
     #morphológiai zárás
     k = np.ones((3, 3))
-    imgMedian = cv2.morphologyEx(imgMedian, cv2.MORPH_CLOSE, k)
+    imgMorph = cv2.morphologyEx(imgMedian, cv2.MORPH_CLOSE, k)
 
     #pontok detektálása
-    rows = imgMedian.shape[0]
-    circles = cv2.HoughCircles(imgMedian, cv2.HOUGH_GRADIENT, 1, rows / 100,
+    rows = imgMorph.shape[0]
+    circles = cv2.HoughCircles(imgMorph, cv2.HOUGH_GRADIENT, 1, rows / 100,
                                 param1=240, param2=23,
                                 minRadius=1, maxRadius=50)
     circles = np.uint16(np.around(circles))
