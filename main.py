@@ -73,7 +73,7 @@ elif sys.argv[1] == "-test":
         for i in range(len(detectedPoints)):
             if(detectedPoints[i] != int(pointsToGet[i])):
                 errors=errors+abs(detectedPoints[i]-int(pointsToGet[i]))
-        print("Elteresek szama megtalalt pontok es az elvart eredmeny kozott (osszes hibaszám): "+str(errors))
+        print("Elteresek szama megtalalt pontok es az elvart eredmeny kozott (osszes hibaszam): "+str(errors))
     else:
         print("hiba")
 
@@ -92,7 +92,7 @@ elif sys.argv[1] == "-test":
         for i in range(len(detectedDices)):
             if(detectedDices[i] != int(dicesToGet[i])):
                 errors=errors+abs(detectedDices[i]-int(dicesToGet[i]))
-        print("Elteresek szama elvart es megtalalat kockak kozott (osszes hibaszám): "+str(errors))
+        print("Elteresek szama elvart es megtalalat kockak kozott (osszes hibaszam): "+str(errors))
     else:
         print("hiba")
 else:
