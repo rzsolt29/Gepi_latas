@@ -126,8 +126,8 @@ def dicePointDetector(kep, pointsToGet, dicesToGet, detectedPoints, detectedDice
     cv2.destroyAllWindows()
 
 
-# A függvény teszteléséhez a következő három sorra van szükség
-
-#detectedPoints = []
-#detectedDices = []
-#dicePointDetector("kepek/61.jpg", "13","3", detectedPoints, detectedDices)
+# Az alábbi kód lehetőséget ad a dicePointDetector függvény teszteléséhez
+if __name__ == "__main__":
+    detectedPoints = []
+    detectedDices = []
+    dicePointDetector("kepek/61.jpg", "13","3", detectedPoints, detectedDices)
